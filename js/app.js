@@ -9,11 +9,29 @@ document.getElementById('search-button').addEventListener('click', function () {
         .then(data => displayName(data))
     
 })
+const setInnerText = (id, insideText) => {
+    const inputValue = document.getElementById(id);
+    inputValue.innerText = insideText;
+}
 const displayName = (name) => {
-    console.log(name)
-    const cityName = document.getElementById('city-name');
-    cityName.innerText = name.name;
     
-    const temp = document.getElementById('temp');
-    temp.innerText = name.main.temp;
+    // const cityName = document.getElementById('city-name');
+    // cityName.innerText = name.name;
+    setInnerText('city-name', name.name)
+    
+    // const temp = document.getElementById('temp');
+    // temp.innerText = name.main.temp;
+    setInnerText('temp',name.main.temp)
+
+    // const clouds = document.getElementById('clouds');
+    // clouds.innerText = name.weather[0].main;
+    setInnerText('clouds',name.weather[0].main)
+    
+
+    // cloud icon
+    const url2 = `http://openweathermap.org/img/wn/${name.weather[0].icon}@2x.png`;
+    const iconImg = document.getElementById('cloud-img');
+    iconImg.setAttribute('src', url2);
+    
+
 }
